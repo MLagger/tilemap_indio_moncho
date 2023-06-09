@@ -1,10 +1,10 @@
 // URL to explain PHASER scene: https://rexrainbow.github.io/phaser3-rex-notes/docs/site/scene/
 
-export default class Juego extends Phaser.Scene {
+export default class Nivel1 extends Phaser.Scene {
   constructor() {
     // key of the scene
     // the key will be used to start the scene by other scenes
-    super("nivel1");
+    super("juego");
   }
 
   init() {
@@ -12,14 +12,14 @@ export default class Juego extends Phaser.Scene {
     // init variables
     // take data passed from other scenes
     // data object param {}
-    this.nivel = 1;
+
     this.cantidadEstrellas = 0;
     console.log("Prueba !");
   }
 
   create() {
     // todo / para hacer: texto de puntaje
-    const map = this.make.tilemap({ key: "map1" });
+    const map = this.make.tilemap({ key: "map" });
 
     // Parameters are the name you gave the tileset in Tiled and then the key of the tileset image in
     // Phaser's cache (i.e. the name you used in preload)
@@ -50,6 +50,8 @@ export default class Juego extends Phaser.Scene {
     //  Player physics properties. Give the little guy a slight bounce.
     this.jugador.setBounce(0.1);
     this.jugador.setCollideWorldBounds(true);
+    this.jugador.body.setGravityY(200); // Ajusta el valor de la gravedad según tus necesidades
+
 
     spawnPoint = map.findObject("objetos", (obj) => obj.name === "salida");
     console.log("spawn point salida ", spawnPoint);
@@ -93,7 +95,7 @@ export default class Juego extends Phaser.Scene {
       this.jugador,
       this.salida,
       this.esVencedor,
-      () => this.cantidadEstrellas >= 2, // condicion de ejecucion
+      () => this.cantidadEstrellas >= 5, // condicion de ejecucion
       this
     );
 
@@ -101,10 +103,7 @@ export default class Juego extends Phaser.Scene {
     this.cantidadEstrellasTexto = this.add.text(
       15,
       15,
-      "Nivel: " +
-        this.nivel +
-        " / Estrellas recolectadas: " +
-        this.cantidadEstrellas.toString(),
+      "Estrellas recolectadas: 0",
       { fontSize: "15px", fill: "#FFFFFF" }
     );
   }
@@ -142,10 +141,7 @@ export default class Juego extends Phaser.Scene {
     this.cantidadEstrellas++;
 
     this.cantidadEstrellasTexto.setText(
-      "Nivel: " +
-        this.nivel +
-        " / Estrellas recolectadas: " +
-        this.cantidadEstrellas.toString()
+      "Estrellas recolectadas: " + this.cantidadEstrellas
     );
   }
 
@@ -157,6 +153,8 @@ export default class Juego extends Phaser.Scene {
 
     this.scene.start("nivel2", {
       cantidadEstrellas: this.cantidadEstrellas,
+      y: "este es un dato de muestra",
+      z: "este es otro atributo enviado a otro escena",
     });
   }
 }
