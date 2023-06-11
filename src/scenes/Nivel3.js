@@ -17,6 +17,7 @@ export default class Nivel3 extends Phaser.Scene {
   }
 
   create() {
+
     // todo / para hacer: texto de puntaje
     const map = this.make.tilemap({ key: "map3" });
 
@@ -106,8 +107,6 @@ export default class Nivel3 extends Phaser.Scene {
       { fontSize: "15px", fill: "#FFFFFF" }
     );
 
-
-
    // camara que siga al jugador
     this.cameras.main.startFollow(this.jugador);
 
@@ -119,6 +118,11 @@ export default class Nivel3 extends Phaser.Scene {
 
     //fijar texto para que no se mueva con la camara
    this.cantidadEstrellasTexto.setScrollFactor(0);
+
+
+   this.add.text( 350,15,"/NIVEL 3/",
+    {fontSize: "15px", fill: "#FFFFFF" }
+    );  
   }
 
   

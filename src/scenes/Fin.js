@@ -18,7 +18,7 @@ export default class Fin extends Phaser.Scene {
 
   create() {
 
-   
+    this.add.image(400, 300, "menuFondo").setScale(1.1);
 
     this.cantidadEstrellasTexto = this.add.text(
       15,
@@ -27,7 +27,7 @@ export default class Fin extends Phaser.Scene {
       { fontSize: "15px", fill: "#FFFFFF" }
     );
 
-    this.add.text(330, 200, "¡WINNER!", {
+    this.add.text(320, 200, "¡WINNER!", {
       fontSize: "40px",
       fill: "#ffffff",
       fontFamily: "roboto",

@@ -17,7 +17,7 @@ export default class Precarga extends Phaser.Scene {
 
     this.load.image("star", "./public/images/star.png");
 
-    
+    this.load.image("mainmenu", "./public/images/main_menu_background.png")
 
     this.load.spritesheet("dude", "./public/images/dude.png", {
       frameWidth: 32,

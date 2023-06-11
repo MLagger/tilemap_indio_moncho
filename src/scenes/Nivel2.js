@@ -104,6 +104,10 @@ export default class Nivel2 extends Phaser.Scene {
       "Estrellas recolectadas: " + this.cantidadEstrellas,
       { fontSize: "15px", fill: "#FFFFFF" }
     );
+
+    this.add.text( 350,15,"/NIVEL 2/",
+    {fontSize: "15px", fill: "#FFFFFF" }
+    );
   }
 
   update() {
